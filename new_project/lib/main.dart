@@ -28,14 +28,15 @@ class MyApp extends StatelessWidget {
 class ListContents extends StatelessWidget {
   final List<CatalogoItem> secoes = [
     CatalogoItem(
-      titulo: 'Widgets de Conteúdo', 
-      icone: Icons.text_fields, descricao: "Exemplos de widgets básicos como Text, image, Icon...",
+      titulo: 'Widgets de Conteúdo',
+      icone: Icons.text_fields,
+      descricao: "Exemplos de widgets básicos como Text, image, Icon...",
       destino: const WidgetsConteudo(),
     ),
     CatalogoItem(
-      titulo: "Widgets de Layout", 
-      icone: Icons.view_agenda, 
-      descricao: "Exemplos / demonstrações de padding, column, flexible", 
+      titulo: "Widgets de Layout",
+      icone: Icons.view_agenda,
+      descricao: "Exemplos / demonstrações de padding, column, flexible",
       destino: const WidgetsLayout(),
     )
   ];
@@ -44,25 +45,22 @@ class ListContents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Catálogo de Widget'),),
-      // Container -> Bloco onde o conteúdo irá ser inserido
-      body: Column(
-        children: [
-          ElevatedButton(onPressed: () => Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (_) => const WidgetsConteudo())
-              ),
-            child: const Text('Widgets de conteúdo'),
-          ),
-          ElevatedButton(onPressed: () => Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (_) => const WidgetsLayout())
-              ),
-            child: const Text('Widgets de layout'),
-          ),
-        ],
-      )
-    );
+        appBar: AppBar(
+          title: const Text('Catálogo de Widget'),
+        ),
+        // Container -> Bloco onde o conteúdo irá ser inserido
+        body: Column(
+          children: secoes
+              .map((item) => ElevatedButton(
+                  onPressed: () => Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (_) => item.destino)
+                    ),
+                  child: Text(item.titulo),
+                  ),
+                )
+              .toList(), // Vamos converter para uma lista, pois o childer do column pede.
+        ));
   }
 }
 
