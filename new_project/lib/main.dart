@@ -48,17 +48,52 @@ class ListContents extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Catálogo de Widget'),
         ),
-        // Container -> Bloco onde o conteúdo irá ser inserido
-        body: Column(
+        // GridView -> Bloco onde o conteúdo irá ser inserido
+        body: GridView.count( // Cria uma visualização de janelas com um número definido
+          crossAxisCount: 2,
+          padding: const EdgeInsets.all(16),
+          crossAxisSpacing: 16,
+          childAspectRatio: 0.85,
           children: secoes
-              .map((item) => ElevatedButton(
-                  onPressed: () => Navigator.push(
-                      context, 
-                      MaterialPageRoute(builder: (_) => item.destino)
+              .map(
+                (item) => GestureDetector(
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => item.destino)),
+                child:
+                  Card(
+                    elevation: 4,
+                    child: Padding(padding: 
+                      const EdgeInsets.all(12),
+                        child: Column(
+                          children: [
+                            Icon(
+                              item.icone, size: 48, color: Colors.blue,
+                            ),
+                            Text(
+                              item.titulo, 
+                              textAlign: TextAlign.center, 
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold, 
+                                fontSize: 16
+                              ),
+                              maxLines: 2, // Máximo de linhas
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              item.descricao, 
+                              textAlign: TextAlign.center, 
+                              style: const TextStyle(
+                                fontSize: 12, 
+                                color: Colors.grey
+                              ),
+                              maxLines: 3, // máximo de linhas
+                              overflow: TextOverflow.ellipsis,
+                            )
+                          ],
+                        )
                     ),
-                  child: Text(item.titulo),
-                  ),
+                  )
                 )
+              )
               .toList(), // Vamos converter para uma lista, pois o childer do column pede.
         ));
   }
