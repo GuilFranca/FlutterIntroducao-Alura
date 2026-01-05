@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/screens/ciclo_stateful.dart';
 import 'package:new_project/screens/ciclo_stateful_parent.dart';
+import 'package:new_project/screens/contador.dart';
 import 'package:new_project/screens/widgets_layout.dart';
 // import 'package:new_project/widgets/titulo_secao.dart';
 
@@ -46,6 +47,12 @@ class ListContents extends StatelessWidget {
       icone: Icons.sync, 
       descricao: 'Entendendo o ciclo de vida de um StatefulWiget', 
       destino: const CicloStatefulParent(),
+    ),
+    CatalogoItem(
+      titulo: 'Contador - setState', 
+      icone: Icons.refresh, 
+      descricao: "Exemplo de contador utilizando setState e gerenciamento do estado", 
+      destino: const Contador(),
     ),
   ];
   ListContents({super.key});
