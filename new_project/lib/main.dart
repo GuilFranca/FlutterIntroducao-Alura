@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/screens/ciclo_stateful.dart';
 import 'package:new_project/screens/widgets_layout.dart';
 // import 'package:new_project/widgets/titulo_secao.dart';
 
@@ -38,7 +39,13 @@ class ListContents extends StatelessWidget {
       icone: Icons.view_agenda,
       descricao: "Exemplos / demonstrações de padding, column, flexible",
       destino: const WidgetsLayout(),
-    )
+    ),
+    CatalogoItem(
+      titulo: 'Ciclo de vida - Stateful', 
+      icone: Icons.sync, 
+      descricao: 'Entendendo o ciclo de vida de um StatefulWiget', 
+      destino: const CicloStateful(),
+    ),
   ];
   ListContents({super.key});
 
@@ -50,17 +57,17 @@ class ListContents extends StatelessWidget {
         ),
         // GridView -> Bloco onde o conteúdo irá ser inserido
         body: GridView.count( // Cria uma visualização de janelas com um número definido
-          crossAxisCount: 2,
+          crossAxisCount: 2, // número de colunas
           padding: const EdgeInsets.all(16),
-          crossAxisSpacing: 16,
-          childAspectRatio: 0.85,
+          crossAxisSpacing: 16, // Espaçamento entre as janelas
+          childAspectRatio: 0.85, // 1 - Quadrado / < 1 - Vertical / > 1 - Horizontal
           children: secoes
               .map(
-                (item) => GestureDetector(
+                (item) => GestureDetector( // Widget reponsavel por deixar os cards clicaveis
                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => item.destino)),
                 child:
                   Card(
-                    elevation: 4,
+                    elevation: 4, // Eleva o Widget em questão deixando uma sombra
                     child: Padding(padding: 
                       const EdgeInsets.all(12),
                         child: Column(
