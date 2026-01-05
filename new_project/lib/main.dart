@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/screens/ciclo_stateful.dart';
+import 'package:new_project/screens/ciclo_stateful_parent.dart';
 import 'package:new_project/screens/widgets_layout.dart';
 // import 'package:new_project/widgets/titulo_secao.dart';
 
@@ -44,7 +45,7 @@ class ListContents extends StatelessWidget {
       titulo: 'Ciclo de vida - Stateful', 
       icone: Icons.sync, 
       descricao: 'Entendendo o ciclo de vida de um StatefulWiget', 
-      destino: const CicloStateful(),
+      destino: const CicloStatefulParent(),
     ),
   ];
   ListContents({super.key});
